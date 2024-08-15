@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Armazém</title>
+</head>
+<body>
+    <h1>Armazene seus filmes favoritos!</h1>
+    <a href="/add_item">Adicionar filme</a>
+
+            <p class="centraliza">Lista de filmes:</p>
+
+                <br><br>
+            {% for paciente in dataList %}
+            <div class="quadro_paciente">
+
+                <div>
+                    <div class="contato">
+
+                        <p class="nome">{{ paciente[1] }}</p>
+                        <br>
+                        <p>Nome: <span class="preto">{{ paciente[1] }}</span> </p>
+                        <p>Gênero: <span class="preto">{{ paciente[2] }}</span></p>
+                        <p>Ano de lançamento: <span class="preto">{{ paciente[3] }}</span> </p>
+                        <p>Imagem: <span class="preto">{{ paciente[4] }}</span> </p>
+                        <br>
+                    </div>
+                    <div class="botoes">
+                        <a href="/edit_item/{{ loop.index0 }}"><button>Editar</button></a>
+
+                    <a href="/del/{{ loop.index0 }}">Remover filme</a>
+                </div>
+                </div>
+            </div>
+            <br><br>
+            {% endfor %}
+</body>
+</html>
