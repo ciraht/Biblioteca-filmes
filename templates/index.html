@@ -15,6 +15,7 @@
             <p class="centraliza">Lista de filmes:</p>
 
                 <br><br>
+        {% if dataList %}
             {% for paciente in dataList %}
             <div class="quadro_paciente">
 
@@ -38,6 +39,9 @@
             </div>
             <br><br>
             {% endfor %}
+        {% else %}
+            <p class="centraliza cinza_clarinho" >Não há nada para ver aqui...</p>
+        {% endif %}
 </main>
 </body>
 </html>

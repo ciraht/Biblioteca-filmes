@@ -118,3 +118,7 @@ h1 {
 .excluir:hover {
     background-color: rgb(231, 76, 60);
 }
+
+.cinza_clarinho{
+    color: rgb(166, 166, 166);
+}
