@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta_aqui'
 dataList = []
 
 @app.route('/', methods=['GET', 'POST'])
@@ -10,12 +11,18 @@ def index():
 @app.route('/add_item', methods=['GET', 'POST'])
 def add_item():
     if request.method == 'POST':
-        nomeanimal = request.form['nome']
+        nome = request.form['nome']
         especie = request.form['especie']
         peso = request.form['peso']
         nometutor = request.form['nome-tutor']
+
+        for paciente in dataList:
+            if paciente[1] == nome:
+                flash("Erro: filme já cadastrado.", "error")
+                return redirect('add_item')
+
         id = len(dataList)
-        dataList.append([id, nomeanimal, especie, peso, nometutor])
+        dataList.append([id, nome, especie, peso, nometutor])
         return redirect('/')
     else:
         return render_template('add-item.html')
@@ -24,12 +31,12 @@ def add_item():
 @app.route('/edit_item/<int:id>', methods=['GET', 'POST'])
 def edit_item(id):
     if request.method == 'POST':
-        nomeanimal = request.form['nome']
+        nome = request.form['nome']
         especie = request.form['especie']
         peso = request.form['peso']
         nometutor = request.form['nome-tutor']
 
-        dataList[id] = [id, nomeanimal, especie, peso, nometutor]
+        dataList[id] = [id, nome, especie, peso, nometutor]
 
         return redirect('/')
     else:
@@ -40,6 +47,7 @@ def edit_item(id):
 def cancelar_paciente(id):
     del dataList[id]
     return redirect('/')
+
 
 
 

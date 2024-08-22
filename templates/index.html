@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Armazém</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
+<main>
+
+
     <h1>Armazene seus filmes favoritos!</h1>
-    <a href="/add_item">Adicionar filme</a>
+    <a href="/add_item" class="add" >Adicionar filme</a>
 
             <p class="centraliza">Lista de filmes:</p>
 
@@ -26,13 +30,14 @@
                         <br>
                     </div>
                     <div class="botoes">
-                        <a href="/edit_item/{{ loop.index0 }}"><button>Editar</button></a>
+                        <a href="/edit_item/{{ loop.index0 }}"class="editar">Editar</a>
 
-                    <a href="/del/{{ loop.index0 }}">Remover filme</a>
+                    <a href="/del/{{ loop.index0 }}" class="excluir">Remover filme</a>
                 </div>
                 </div>
             </div>
             <br><br>
             {% endfor %}
+</main>
 </body>
 </html>

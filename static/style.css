@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 236, 255);
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.editar{
+    background-color: rgb(133, 255, 88);
+    border-radius: 10px;
+
+}
+
+.excluir{
+    background-color: rgb(255, 88, 88);
+    border-radius: 10px;
+}
+.contato{
+    text-align: center;
+    background-color: rgb(218, 218, 218);
+    border-radius: 20px;
+    margin-left: 475px;
+    width: 300px;
+    box-shadow: 10px 1px 11px 0px;
+}
+
+.botoes{
+    text-align: center;
+}
+
+
+.add{
+
+}
