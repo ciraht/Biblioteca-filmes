@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Adicionar filme</title>
+    <link rel="stylesheet" href="../static/style_add.css">
 </head>
 <body>
     {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
-            <div>
+            <div class="messages">
                 {% for category, message in messages %}
                     <div class="{{ category }}">{{ message }}</div>
                 {% endfor %}
@@ -15,64 +16,63 @@
         {% endif %}
     {% endwith %}
     <h1>Cadastrar filme</h1>
-    <div>
 
-            <form action="/add_item" method="POST">
-                <div>
-                    <label for="nome">Nome: </label>
-                    <input type="text" id="nome" name="nome" placeholder="nome do filme" required>
-                </div>
+    <div class="form-container">
+        <form action="/add_item" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" name="nome" placeholder="nome do filme" required>
+            </div>
 
-                <div>
-                    <label for="especie">Gênero: </label>
-                    <select id="especie" name="especie">
-                        <option value="Ação">Ação</option>
-                        <option value="Comédia">Comédia</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Ficção Científica">Ficção Científica</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Terror">Terror</option>
-                        <option value="Suspense">Suspense</option>
-                        <option value="Aventura">Aventura</option>
-                        <option value="Animação">Animação</option>
-                        <option value="Documentário">Documentário</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="especie">Gênero: </label>
+                <select id="especie" name="especie">
+                    <option value="Ação">Ação</option>
+                    <option value="Comédia">Comédia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Ficção Científica">Ficção Científica</option>
+                    <option selected value="Romance">Romance</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Animação">Animação</option>
+                    <option value="Documentário">Documentário</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
 
-                <div id="div_outros2" style="display: none">
-                    <label for="outros">Escreva o gênero do filme: </label>
-                    <input type="text" id="outros" name="outros" step="0.01" >
-                </div>
+            <div id="div_outros2" class="form-group" style="display: none">
+                <label for="outros">Escreva o gênero do filme: </label>
+                <input type="text" id="outros" name="outros" step="0.01">
+            </div>
 
-                <div>
-                    <label for="peso">Ano de lançamento: </label>
-                    <input max="2024" type="number" id="peso" name="peso" placeholder="somente o ano"><br>
-                </div>
+            <div class="form-group">
+                <label for="peso">Ano de lançamento: </label>
+                <input max="2024" type="number" id="peso" name="peso" placeholder="somente o ano">
+            </div>
 
-                <div>
-                    <label for="nome-tutor">Foto</label>
-                    <input type="file" id="nome-tutor" name="nome-tutor" placeholder="opcional"><br>
-                </div>
+            <div class="form-group">
+                <label for="nome-tutor">Foto</label>
+                <input type="file" id="nome-tutor" name="nome-tutor" placeholder="opcional">
+            </div>
 
-                <div>
-                    <button type="submit" class="botao-especial">ADICIONAR</button>
-                </div>
-            </form>
+            <div class="form-group">
+                <button type="submit" class="botao-especial">ADICIONAR</button>
+            </div>
+        </form>
 
-            <script>
-                    let especie = document.getElementById("especie")
+        <script>
+            let especie = document.getElementById("especie");
 
-                    especie.addEventListener("change", function() {
-                        let valor = document.getElementById("especie").value
-                        if (valor === "Outro") {
-                            document.getElementById("div_outros2").style.display = "block"
-                        } else {
-                            document.getElementById("div_outros2").style.display = "none"
-                        }
-                    })
-
-            </script>
+            especie.addEventListener("change", function() {
+                let valor = document.getElementById("especie").value;
+                if (valor === "Outro") {
+                    document.getElementById("div_outros2").style.display = "block";
+                } else {
+                    document.getElementById("div_outros2").style.display = "none";
+                }
+            });
+        </script>
     </div>
 </body>
 </html>
