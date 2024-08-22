@@ -13,16 +13,16 @@ def add_item():
     if request.method == 'POST':
         nome = request.form['nome']
         especie = request.form['especie']
-        peso = request.form['peso']
-        nometutor = request.form['nome-tutor']
+        ano = request.form['ano']
+        img = request.form['img']
 
-        for paciente in dataList:
-            if paciente[1] == nome:
+        for filme in dataList:
+            if filme[1] == nome:
                 flash("Erro: filme já cadastrado.", "error")
                 return redirect('add_item')
 
         id = len(dataList)
-        dataList.append([id, nome, especie, peso, nometutor])
+        dataList.append([id, nome, especie, ano, img])
         return redirect('/')
     else:
         return render_template('add-item.html')
@@ -33,18 +33,18 @@ def edit_item(id):
     if request.method == 'POST':
         nome = request.form['nome']
         especie = request.form['especie']
-        peso = request.form['peso']
-        nometutor = request.form['nome-tutor']
+        ano = request.form['ano']
+        img = request.form['img']
 
-        dataList[id] = [id, nome, especie, peso, nometutor]
+        dataList[id] = [id, nome, especie, ano, img]
 
         return redirect('/')
     else:
-        paciente = dataList[id]
-        return render_template('edit-item.html', paciente=paciente)
+        filme = dataList[id]
+        return render_template('edit-item.html', filme=filme)
 
 @app.route('/del/<int:id>')
-def cancelar_paciente(id):
+def cancelar_filme(id):
     del dataList[id]
     return redirect('/')
 
